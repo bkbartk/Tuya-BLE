@@ -394,6 +394,54 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
             ],
         },
     ),
+    "ykq": TuyaBLECategorySensorMapping(
+        products={
+            "csv4aah3": [  # Remote
+                TuyaBLESensorMapping(
+                    dp_id=2,
+                    description=SensorEntityDescription(
+                        key="scene_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=6,
+                    description=SensorEntityDescription(
+                        key="switch_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=7,
+                    description=SensorEntityDescription(
+                        key="mode_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=8,
+                    description=SensorEntityDescription(
+                        key="bright_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=9,
+                    description=SensorEntityDescription(
+                        key="temp_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=10,
+                    description=SensorEntityDescription(
+                        key="color_controller",
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=52,
+                    description=SensorEntityDescription(
+                        key="scene_switch",
+                    ),
+                ),                
+            ],
+        },
+    ),
 }
 
 
