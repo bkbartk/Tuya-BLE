@@ -316,6 +316,14 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
             ),
         },
     ),
+    "ykq": TuyaBLECategoryInfo(
+        products={
+            "csv4aah3":  # device product_id
+            TuyaBLEProductInfo(
+                name="Remote",
+            ),
+        },
+    ),
 }
 
 
