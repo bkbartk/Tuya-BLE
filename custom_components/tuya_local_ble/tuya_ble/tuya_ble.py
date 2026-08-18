@@ -409,12 +409,12 @@ class TuyaBLEDevice:
         else:
             return ""
 
-    @property
-    def ble_passive_mode(self) -> bool:
-        if self._device_info is not None and self._device_info.ble_passive_mode is not None:
-            return self._device_info.ble_passive_mode
-        else:
-            return False
+    # @property
+    # def ble_passive_mode(self) -> bool:
+    #     if self._device_info is not None and self._device_info.ble_passive_mode is not None:
+    #         return self._device_info.ble_passive_mode
+    #     else:
+    #         return False
 
     @property
     def ble_unlock_check(self) -> str:
@@ -512,7 +512,7 @@ class TuyaBLEDevice:
         was_paired = self._is_paired
         self._is_paired = False
         self._fire_disconnected_callbacks()
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             _LOGGER.debug(
                 "%s: Disconnected from device; RSSI: %s",
                 self.address,
@@ -574,7 +574,7 @@ class TuyaBLEDevice:
     async def _ensure_connected(self) -> None:
         """Ensure connection to device is established."""
         global global_connect_lock
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             return
         if self._connect_lock.locked():
             _LOGGER.debug(
@@ -720,10 +720,10 @@ class TuyaBLEDevice:
         async with self._seq_num_lock:
             self._current_seq_num = 1
         try:
-            if self._expected_disconnect or self.ble_passive_mode:
+            if self._expected_disconnect or self.product_id == "csv4aah3":
                 return
             await self._ensure_connected()
-            if self._expected_disconnect or self.ble_passive_mode:
+            if self._expected_disconnect or self.product_id == "csv4aah3":
                 return
             _LOGGER.debug("%s: Reconnect, connection ensured", self.address)
         except BLEAK_EXCEPTIONS:  # BleakNotFoundError:
@@ -852,10 +852,10 @@ class TuyaBLEDevice:
         # retry: int | None = None,
     ) -> None:
         """Send packet to device and optional read response."""
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             return
         await self._ensure_connected()
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             return
         await self._send_packet_while_connected(code, data, 0, wait_for_response)
 
@@ -948,10 +948,10 @@ class TuyaBLEDevice:
                 raise
 
     async def _resend_packets(self, packets: list[bytes]) -> None:
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             return
         await self._ensure_connected()
-        if self._expected_disconnect or self.ble_passive_mode:
+        if self._expected_disconnect or self.product_id == "csv4aah3":
             return
         await self._int_send_packet_while_connected(packets)
 
