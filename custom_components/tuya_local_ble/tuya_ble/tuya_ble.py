@@ -268,6 +268,14 @@ class TuyaBLEDevice:
         """Set the ble device."""
         self._ble_device = ble_device
         self._advertisement_data = advertisement_data
+        if self.product_id == "csv4aah3" and not (self._client and self._client.is_connected):
+            asyncio.create_task(self._connect_on_advertisement())
+
+    async def _connect_on_advertisement(self) -> None:
+        try:
+            await self.update()
+        except BLEAK_EXCEPTIONS:
+            _LOGGER.debug("%s: connect-on-advertisement attempt failed", self.address
 
     async def initialize(self) -> None:
         _LOGGER.debug("%s: Initializing", self.address)
