@@ -275,7 +275,7 @@ class TuyaBLEDevice:
         try:
             await self.update()
         except BLEAK_EXCEPTIONS:
-            _LOGGER.debug("%s: connect-on-advertisement attempt failed", self.address
+            _LOGGER.debug("%s: connect-on-advertisement attempt failed", self.address)
 
     async def initialize(self) -> None:
         _LOGGER.debug("%s: Initializing", self.address)
