@@ -142,6 +142,66 @@ mapping: dict[str, TuyaBLECategoryTextMapping] = {
             ),
         },
     ),
+    "ykq": TuyaBLECategoryTextMapping(
+        products={
+            "csv4aah3": [  # Remote
+                TuyaBLETextMapping(
+                    dp_id=2,
+                    description=TextEntityDescription(
+                        key="scene_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                ),
+                TuyaBLETextMapping(
+                    dp_id=6,
+                    description=TextEntityDescription(
+                        key="switch_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    is_available=True,
+                ),
+                TuyaBLETextMapping(
+                    dp_id=7,
+                    description=TextEntityDescription(
+                        key="mode_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    is_available=True,  
+                ),
+                TuyaBLETextMapping(
+                    dp_id=8,
+                    description=TextEntityDescription(
+                        key="bright_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    is_available=True,  
+                ),
+                TuyaBLETextMapping(
+                    dp_id=9,
+                    description=TextEntityDescription(
+                        key="temp_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    is_available=True,
+                ),
+                TuyaBLETextMapping(
+                    dp_id=10,
+                    description=TextEntityDescription(
+                        key="color_controller",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                ),
+                TuyaBLETextMapping(
+                    dp_id=52,
+                    description=TextEntityDescription(
+                        key="scene_switch",
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                    is_available=True,
+                ),                
+            ],
+        },
+    ),
 }
 
 
